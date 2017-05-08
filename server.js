@@ -91,13 +91,13 @@ app.get('/dataset/stream/graph', function(req, res){
 //   app.listen(8000);
 //});
 
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+//var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+//var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
 
 //Levanta el servidor cuando la BD este lista
 db.warmupEmmitter.once("warmup",() => {
-  app.listen(server_port, server_ip_address, function(){
-    console.log("Listening on " + server_ip_address + ", server_port " + server_port)
+  app.listen(8080, function(){
+    //console.log("Listening on " + server_ip_address + ", server_port " + server_port)
   });
    //console.log("Web server running on port 8000");
    //app.listen(8000);
