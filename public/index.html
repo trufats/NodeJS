@@ -100,7 +100,7 @@
 		
 		var streamname=data.getAttribute("id");
 
-		$.getJSON("http://localhost:8000/dataset/"+streamname+"/words?top=10").done(function(data){
+		$.getJSON("/dataset/"+streamname+"/words?top=10").done(function(data){
 			update_cloud(data.result);
 	   	})
 
@@ -110,13 +110,13 @@
 	    
 		//update_cloud(lwords);
 		
-		$.getJSON("http://localhost:8000/dataset/"+streamname+"/polaridad").done(function(data){
+		$.getJSON("/dataset/"+streamname+"/polaridad").done(function(data){
 			var denom = data.result.positive + data.result.negative
 			var pol = {"positive":data.result.positive/denom, "negative":data.result.negative/denom}			
 			update_polar(pol);
 	   	})
 
-		$.getJSON("http://localhost:8000/dataset/"+streamname+"/geo").done(function(data){
+		$.getJSON("/dataset/"+streamname+"/geo").done(function(data){
 			console.log(data.result);
 			var puntos={}; 
 			for (var i in data.result){
@@ -128,7 +128,7 @@
 	   	})
 
 		update_pictures(streamname);	
-		$.getJSON("http://localhost:8000/dataset/"+streamname+"?limit=5").done(function(data){
+		$.getJSON("/dataset/"+streamname+"?limit=5").done(function(data){
 			$('#links').empty();
 			for (var i in data.result){
 				console.log(data.result[i]);
@@ -216,7 +216,7 @@
 	function sendData(){
 		postdata={name:$("#name").val(),query:$("#query").val()};
        		$.ajax({type: "POST",
-                	url: "http://localhost:8000/stream",
+                	url: "/stream",
                 	data: JSON.stringify(postdata),
                 	contentType:'application/json' 
         	})
