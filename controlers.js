@@ -4,7 +4,7 @@ var DB = new db.myDB('./data');
 const mng=require('mongoose');
 const my_conn_data = "mongodb://al224938:labora2000@ds117821.mlab.com:17821/mydb";
 
-var dbMongo = mng.connect(my_conn_data);
+//var dbMongo = mng.connect(my_conn_data);
 
 var  itemSchema = new mng.Schema({
 	"@context": String,
@@ -23,11 +23,11 @@ function insertMongoDB(name, query){
 	
 	var jsonLd = new ItemModel(createJSONLD(name, query));
 
-	jsonLd.save(function(err){
-		if(err) throw err;
-		console.log("Guardado");
-		mng.connection.close();
-	});	
+	//jsonLd.save(function(err){
+	//	if(err) throw err;
+	//	console.log("Guardado");
+	//	mng.connection.close();
+	//});	
 }
 
 function getGraphMongoDB(callback){
